@@ -25,6 +25,10 @@ def play_loto(card_list_to_play, player_list_to_play):
     is_play = True
     player_number = 0
 
+    print(player_one == player_two)
+    print(player_card == player_card)
+
+
     while is_play:
         print(' ')
         print(f'Счет: {player_list_to_play[0].name} - {player_list_to_play[0].cross_count} очк.'
@@ -32,8 +36,8 @@ def play_loto(card_list_to_play, player_list_to_play):
         print(f'Сейчас ход игрока: {card_list_to_play[player_number].card_name}')
         barrel_num = str(new_pouch.get_barrel())
         print(f'Бочонок №: {barrel_num}, осталось {len(new_pouch.pouch)}')
-        for i in range(2):
-            show_card(card_list[i].card_values, card_list[i].card_name)
+        print(card_list[0])
+        print(card_list[1])
 
         if player_number == 0:
             answer = str(input('Зачеркивать число? (да/нет): '))

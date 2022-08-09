@@ -1,15 +1,5 @@
 import random
-
-
-def show_card(card, name):
-    split_len = 10
-    if len(name) < 8:
-        split_len = 11
-    print('-' * split_len, name, '-' * split_len)
-    print(card[:5])
-    print(card[5:10])
-    print(card[10:])
-    print('--' * 15)
+import collections
 
 
 class Card:
@@ -30,3 +20,17 @@ class Card:
         if num in self.card_values:
             self.card_values[self.card_values.index(num)] = '--'
 
+    def __str__(self):
+        split_len = 11
+        if len(self.card_name) < 8:
+            split_len = 12
+
+        first_str = str('-' * split_len + self.card_name + '-' * split_len)
+        second_str = str(self.card_values[:5])
+        tr_str = str(self.card_values[5:10])
+        for_str = str(self.card_values[10:])
+        fiv_str = str('--' * 15)
+        return first_str + '\n' + second_str + '\n' + tr_str + '\n' + for_str + '\n' + fiv_str
+
+    def __eq__(self, other):
+        return collections.Counter(self.card_values) == collections.Counter(other.card_values)

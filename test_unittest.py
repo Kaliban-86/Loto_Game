@@ -26,6 +26,13 @@ class TestCard(unittest.TestCase):
         self.card.cross_out(7)
         self.assertEqual(self.card.card_values[0], '--')
 
+    def test_magic_eq(self):
+        self.card.create_cards('test_1')
+        test_2 = Card()
+        test_2.create_cards('test_2')
+        self.assertEqual(self.card.card_values == test_2.card_values, False)
+
+
 
 class TestPouch(unittest.TestCase):
 
@@ -58,3 +65,7 @@ class TestPlayer(unittest.TestCase):
     def test_counting_win(self):
         self.player.counting_win()
         self.assertEqual(self.player.cross_count, 1)
+
+    def test_magic_eq(self):
+        player_2 = Player('player_2')
+        self.assertEqual(self.player == player_2, False)
